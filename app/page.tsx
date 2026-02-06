@@ -59,44 +59,116 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-block mb-6 animate-float">
-              <Image
-                src="/logo-colored.png"
-                alt="Reflectia Icon"
-                width={96}
-                height={96}
-                className="w-40 h-40 drop-shadow-2xl"
-              />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8 animate-in fade-in slide-in-from-left duration-700">
+              <div className="inline-block">
+                <span className="px-6 py-2 bg-gradient-to-r from-[#FFF4E6] to-[#FFE8CC] text-gray-800 rounded-full text-sm font-semibold">
+                  Character Development
+                </span>
+              </div>
+
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                Growth on point.
+              </h1>
+
+              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-xl">
+                Track your character, build lasting habits, and receive honest feedback - just like successful people do, with an app that actually helps you grow.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a
+                  href="https://play.google.com/apps/internaltest/4701730610342132068"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group px-6 py-3 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition shadow-lg inline-flex items-center justify-center gap-3"
+                >
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-xs opacity-75">Get it on</div>
+                    <div className="font-bold">Google Play</div>
+                  </div>
+                </a>
+
+                <button
+                  onClick={() => setIsIosModalOpen(true)}
+                  className="group px-6 py-3 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition shadow-lg inline-flex items-center justify-center gap-3"
+                >
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-xs opacity-75">Download on the</div>
+                    <div className="font-bold">App Store</div>
+                  </div>
+                </button>
+              </div>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 animate-in fade-in slide-in-from-bottom duration-700">
-              Find Your Inner <span className="text-gradient">Balance</span>
-            </h1>
+            {/* Right Content - Phone Mockup with Orbits */}
+            <div className="relative lg:h-[700px] flex items-center justify-center animate-in fade-in slide-in-from-right duration-700 delay-300">
+              {/* Orbital Rings */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Outer ring */}
+                <div className="absolute w-[550px] h-[550px] border-2 border-gray-200 rounded-full" />
+                {/* Middle ring */}
+                <div className="absolute w-[450px] h-[450px] border-2 border-gray-200 rounded-full" />
+                {/* Inner ring */}
+                <div className="absolute w-[350px] h-[350px] border-2 border-gray-200 rounded-full" />
+              </div>
 
-            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom duration-700 delay-150">
-              Build character, track your daily insights, and receive personalized AI nudges to become your best self
-            </p>
+              {/* Orbiting Icons */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Icon 1 - Heart */}
+                <div className="absolute w-[550px] h-[550px] animate-spin-slow">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-pink-400 to-red-400 rounded-2xl flex items-center justify-center shadow-lg">
+                    <Heart className="w-6 h-6 text-white" fill="white" />
+                  </div>
+                </div>
 
-            <HeroCarousel />
+                {/* Icon 2 - Star */}
+                <div className="absolute w-[450px] h-[450px] animate-spin-slower" style={{ animationDirection: 'reverse' }}>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-2xl flex items-center justify-center shadow-lg">
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12 animate-in fade-in slide-in-from-bottom duration-700 delay-300">
-              <a
-                href="#download"
-                className="group px-8 py-4 bg-gradient-to-r from-[#4DD0C1] to-[#3DBDAE] hover:from-[#3DBDAE] hover:to-[#2CA89A] text-white font-semibold rounded-full transition shadow-lg hover:shadow-2xl transform hover:scale-105 inline-flex items-center justify-center gap-2"
-              >
-                <Download className="w-5 h-5 group-hover:animate-bounce" />
-                Download App
-              </a>
-              <a
-                href="#features"
-                className="px-8 py-4 bg-white hover:bg-gray-50 text-[#4DD0C1] font-semibold rounded-full transition shadow-lg border-2 border-[#4DD0C1] inline-flex items-center justify-center gap-2"
-              >
-                <Sparkles className="w-5 h-5" />
-                Learn More
-              </a>
+                {/* Icon 3 - Zap */}
+                <div className="absolute w-[350px] h-[350px] animate-spin-slow">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-[#4DD0C1] to-[#3DBDAE] rounded-2xl flex items-center justify-center shadow-lg">
+                    <Zap className="w-6 h-6 text-white" fill="white" />
+                  </div>
+                </div>
+
+                {/* Icon 4 - Target */}
+                <div className="absolute w-[450px] h-[450px] animate-spin-slow" style={{ animationDelay: '2s' }}>
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center shadow-lg">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone Mockup */}
+              <div className="relative z-10">
+                <div className="relative">
+                  <Image
+                    src="/mockup_7.png"
+                    alt="Reflectia App"
+                    width={300}
+                    height={600}
+                    className="w-[300px] h-auto drop-shadow-2xl"
+                  />
+
+                  {/* Glow effect behind phone */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#4DD0C1]/20 to-[#3DBDAE]/20 blur-3xl rounded-full -z-10 scale-75" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
