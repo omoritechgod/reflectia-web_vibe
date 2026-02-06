@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { Bell, MessageCircle, TrendingUp } from "lucide-react"
 
@@ -11,9 +11,10 @@ interface FeatureSectionProps {
   description: string
   imageSide: "left" | "right"
   gradient: string
+  imagePath?: string
 }
 
-export function FeatureSection({ icon, title, description, imageSide, gradient }: FeatureSectionProps) {
+export function FeatureSection({ icon, title, description, imageSide, gradient, imagePath }: FeatureSectionProps) {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
 
@@ -58,27 +59,44 @@ export function FeatureSection({ icon, title, description, imageSide, gradient }
           }`}
         >
           <div className="relative">
-            {/* Phone mockup frame */}
-            <div className="relative mx-auto w-[280px] h-[580px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
-              <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
-                {/* Phone screen content */}
-                <div className={`w-full h-full bg-gradient-to-br ${gradient} p-6 flex items-center justify-center`}>
-                  <div className="text-white text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-                      {icon}
-                    </div>
-                    <div className="text-sm font-medium">Feature Preview</div>
-                  </div>
-                </div>
+            {imagePath ? (
+              <div className="relative mx-auto">
+                <Image
+                  src={imagePath}
+                  alt={title}
+                  width={300}
+                  height={600}
+                  className="w-full h-auto drop-shadow-2xl max-w-sm"
+                />
+                <div
+                  className={`absolute -z-10 inset-0 bg-gradient-to-br ${gradient} opacity-15 blur-3xl rounded-full transform scale-75`}
+                />
               </div>
-              {/* Phone notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl" />
-            </div>
+            ) : (
+              <>
+                {/* Phone mockup frame */}
+                <div className="relative mx-auto w-[280px] h-[580px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+                  <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
+                    {/* Phone screen content */}
+                    <div className={`w-full h-full bg-gradient-to-br ${gradient} p-6 flex items-center justify-center`}>
+                      <div className="text-white text-center">
+                        <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                          {icon}
+                        </div>
+                        <div className="text-sm font-medium">Feature Preview</div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Phone notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl" />
+                </div>
 
-            {/* Floating decoration */}
-            <div
-              className={`absolute -z-10 inset-0 bg-gradient-to-br ${gradient} opacity-20 blur-3xl rounded-full transform scale-75`}
-            />
+                {/* Floating decoration */}
+                <div
+                  className={`absolute -z-10 inset-0 bg-gradient-to-br ${gradient} opacity-20 blur-3xl rounded-full transform scale-75`}
+                />
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -88,7 +106,7 @@ export function FeatureSection({ icon, title, description, imageSide, gradient }
 
 export function FeaturesShowcase() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">Powerful Features for Your Growth</h2>
@@ -103,6 +121,7 @@ export function FeaturesShowcase() {
           description="Stay on track with intelligent reminders that adapt to your schedule and habits. Our AI learns from your behavior to send perfectly timed nudges that keep you motivated without being intrusive."
           imageSide="left"
           gradient="from-purple-500 to-pink-500"
+          imagePath="/ai_nudge.png"
         />
 
         <FeatureSection
@@ -119,6 +138,7 @@ export function FeaturesShowcase() {
           description="Visualize your growth journey with detailed analytics and streak tracking. Celebrate milestones, identify patterns, and stay motivated with gamification that makes personal development enjoyable."
           imageSide="left"
           gradient="from-green-500 to-teal-500"
+          imagePath="/mockup_9.png"
         />
       </div>
     </section>

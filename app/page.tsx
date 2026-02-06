@@ -177,6 +177,9 @@ export default function Home() {
       {/* Animated Features Showcase */}
       <FeaturesShowcase />
 
+      {/* Transition Gradient Section */}
+      <div className="h-32 bg-gradient-to-b from-white via-white to-gray-50" />
+
       {/* Features Grid Section */}
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
